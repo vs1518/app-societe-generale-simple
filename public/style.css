@@ -74,7 +74,6 @@ body {
     padding:30px;
     flex-direction: column;
     align-items: center;
-    /*padding-top: 14em !important;*/
 }
 body {
     margin:auto;
@@ -150,7 +149,6 @@ body {
     padding:30px;
     display:none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
