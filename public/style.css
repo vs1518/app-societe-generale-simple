@@ -75,65 +75,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-body {
-    margin:auto;
-    padding:auto;
-} 
 
-/* _____Code pour le visuel de la page (fond SG)______ */
-.zone-quizz {
-    position:relative;
-}
-
-.background {
-    position:relative;
-    height: 100vh;
-    width:100vw;
-    z-index:0;
-}
-
-.section-red {
-    background-color: #E4002C;
-    height: 50vh;
-    width:100vw;
-    transform: translateX(-100%);
-}
-
-.section-black {
-    background-color: #191919;
-    height: 50vh;
-    width:100vw;
-    transform: translateX(100%);
-}
-
-/* _________Code pour animation en arrivant_______ */
-.section {
-    opacity: 0;
-    transition: transform 3s ease;
-}
-
-.section-visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.button-entrance {
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    width: 50vw;
-    height:auto;
-    background-color: #FFFFFF;
-    border: none ;
-    border-radius: 10px;
-    padding:10px;
-    display:block;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 3s ease, transform 3s ease;
-}
 
 /* _______Code pour bloc central blanc_____ */
 .questionnaire-body, .questionnaire-intro {
