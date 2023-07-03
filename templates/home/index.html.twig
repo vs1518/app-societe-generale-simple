@@ -30,21 +30,7 @@
 
     <button class="button-entrance" onclick="showSection()">Questionnaire "Trouve ton association"</button>
 
-    <section class="questionnaire-body p-4 border rounded mx-auto">
-        <h1 class="text-center mb-4">Trouver mon asso</h1>
-
-        <h3 class="text-center mb-4">
-            Question 
-        </h3>
-
-        <div class="d-grid gap-2">
-            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-            <button type="button" class="btn btn-outline-danger btn-lg">Retour</button>
-        </div>
-
-    </section>
+    {% include 'home/questionnaire.html.twig' %}
 
 </div>
 
