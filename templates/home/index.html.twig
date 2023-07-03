@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Société Générale - Questionnaire{% endblock %}
 
 {% block body %}
-{{ dump() }}
+{# {{ dump() }} #}
 
 {# <h1>Trouver mon asso</h1>
 
@@ -21,28 +21,32 @@
 <div id="assos">
 </div> #}
 
-<style>
-.questionnaire-body {
-    max-width: 600px;
-}
-</style>
+<div class="zone-quizz">
 
-<h1 class="text-center mb-4">Trouver mon asso</h1>
-
-<section class="questionnaire-body p-4 border rounded mx-auto">
-
-    <h3 class="text-center mb-4">
-        Question
-    </h3>
-
-    <div class="d-grid gap-2">
-        <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-        <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-        <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
-        <button type="button" class="btn btn-outline-danger btn-lg">Retour</button>
+    <div class="background">
+        <div class="section section-red"></div>
+        <div class="section section-black"></div>
     </div>
 
-</section>
+    <button class="button-entrance" onclick="showSection()">Questionnaire "Trouve ton association"</button>
+
+    <section class="questionnaire-body p-4 border rounded mx-auto">
+        <h1 class="text-center mb-4">Trouver mon asso</h1>
+
+        <h3 class="text-center mb-4">
+            Question
+        </h3>
+
+        <div class="d-grid gap-2">
+            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
+            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
+            <button type="button" class="btn btn-outline-dark btn-lg">Réponse</button>
+            <button type="button" class="btn btn-outline-danger btn-lg">Retour</button>
+        </div>
+
+    </section>
+
+</div>
 
 <script>
 const escapeXSS = (text) => {
@@ -369,6 +373,44 @@ createSelectListener(zoneDisponibilites, 'disponibilites');
 createSelectListener(zoneMissions, 'missions');
 
 displayAssos(); #}
+
+
+
+/* ______Code pour animation à l'entrée_____ */
+document.addEventListener('DOMContentLoaded', function() {
+    var sections = document.querySelectorAll('.section');
+
+    function animateSections() {
+        for (var i = 0; i < sections.length; i++) {
+            var section = sections[i];
+            var sectionTop = section.getBoundingClientRect().top;
+    
+            if (sectionTop - window.innerHeight + 100 < 0) {
+            section.classList.add('section-visible');
+            } else {
+            section.classList.remove('section-visible');
+            }
+        }
+    }
+
+    animateSections(); // Appel initial de la fonction animateSections
+});
+
+/* ______Code pour faire apparaitre le questionnaire______*/
+function showSection() {
+    var buttonEntrance = document.querySelector('.button-entrance');
+    var questionnaire = document.querySelector('.questionnaire-body');
+
+    // ButtonEntrance devient display:none
+    buttonEntrance.style.display = 'none';
+
+    // Questionnaire devient display:flex
+    questionnaire.style.display = 'flex';
+
+}
+
+
+
 
 </script>
 
