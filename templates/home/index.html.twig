@@ -28,9 +28,26 @@
         <div class="section section-black"></div>
     </div>
 
-    <button class="button-entrance" onclick="showSection()">Questionnaire "Trouve ton association"</button>
+    <button class="button-entrance" onclick="showSectionIntro()">Questionnaire "Trouve ton association"</button>
 
-    <section class="questionnaire-body p-4 border rounded mx-auto">
+    <div class="questionnaire-intro">
+        <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro"></div>
+        <button class="button-close" href="#">x</button>
+        <h1>Trouve ton association !</h1>
+        <p>Nec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoque sexu peremptae sunt originis altae conplures, adulteriorum flagitiis obnoxiae vel stuprorum.</p>
+        <button class="button-start" onclick="showSectionQuizz()">Commencer</button>
+
+        <div class="eggs-logo">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
+            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
+        </div>
+    </div>
+
+    <section class="questionnaire-body">
         <h1 class="text-center mb-4">Trouver mon asso</h1>
 
         <h3 class="text-center mb-4">
@@ -396,16 +413,29 @@ document.addEventListener('DOMContentLoaded', function() {
     animateSections(); // Appel initial de la fonction animateSections
 });
 
-/* ______Code pour faire apparaitre le questionnaire______*/
-function showSection() {
+/* ______Code pour faire apparaitre l'introduction du questionnaire______*/
+function showSectionIntro() {
     var buttonEntrance = document.querySelector('.button-entrance');
-    var questionnaire = document.querySelector('.questionnaire-body');
+    var questionnaireIntro = document.querySelector('.questionnaire-intro');
 
     // ButtonEntrance devient display:none
     buttonEntrance.style.display = 'none';
 
     // Questionnaire devient display:flex
-    questionnaire.style.display = 'flex';
+    questionnaireIntro.style.display = 'flex';
+
+}
+
+/* ______Code pour lancer le questionnaire (introduction, bouton "commencer")______*/
+function showSectionQuizz() {
+    var questionnaireIntro = document.querySelector('.questionnaire-intro');
+    var questionnaireBody = document.querySelector('.questionnaire-body');
+
+    // ButtonEntrance devient display:none
+    questionnaireIntro.style.display = 'none';
+
+    // Questionnaire devient display:flex
+    questionnaireBody.style.display = 'flex';
 
 }
 
