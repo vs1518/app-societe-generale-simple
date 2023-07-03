@@ -13,6 +13,8 @@ class AppFixtures extends Fixture
     {
         $regions = [
             'Ile-de-France',
+            'Bretagne',
+            'Centre-Val de Loire',
             'Normandie',
             'Nouvelle Aquitaine',
             'Occitanie',
