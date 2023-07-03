@@ -35,15 +35,33 @@
         <button class="button-close" href="#">x</button>
         <h1>Trouve ton association !</h1>
         <p>Nec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoque sexu peremptae sunt originis altae conplures, adulteriorum flagitiis obnoxiae vel stuprorum.</p>
-        <button class="button-start" onclick="showSectionQuizz()">Commencer</button>
+        <button class="button-red" onclick="showSectionQuizz()">Commencer</button>
 
         <div class="eggs-logo">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mt-3">
-            <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-intro mb-3">
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mt-3">
+                <img src="{{ asset('/images/Article1Dema1n.png')}}" alt="logo association" class="logo-img mt-3">
+            </div>
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mb-3">
+                <img src="{{ asset('/images/InstitutdelEngagement.png')}}" alt="logo association" class="logo-img mb-3">
+            </div>
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mt-3">
+                <img src="{{ asset('/images/kodiko.png')}}" alt="logo association" class="logo-img mt-3">
+            </div>
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mb-3">
+                <img src="{{ asset('/images/Lesombres.png')}}" alt="logo association" class="logo-img mb-3">
+            </div>
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mt-3">
+                <img src="{{ asset('/images/MyJobGlasses.png')}}" alt="logo association" class="logo-img mt-3">
+            </div>
+            <div class="egg-intro">
+                <img src="{{ asset('/images/oeuf.png')}}" alt="oeuf dessin" class="egg-img mb-3">
+                <img src="{{ asset('/images/CPossible.png')}}" alt="logo association" class="logo-img mb-3">
+            </div>
         </div>
     </div>
 
@@ -192,9 +210,13 @@ const displayResult = () => {
     const assos = getFilteredAssociations();
 
     questionnaireBody.innerHTML = `
-    <h3 class="text-center mb-4">
-        Résultat
-    </h3>
+    <button class="button-close" href="#">x</button>
+    <div class="img-poule-intro"><img src="{{ asset('/images/poule-poussin.png')}}" alt="poule et poussin dessin" class="chicken-intro"></div>
+    <div class="img-coquille-fin"><img src="{{ asset('/images/coquille.png')}}" alt="coquille d'oeufs dessin" class="shell-outro"></div>
+
+    <h2 class="text-center mb-4">
+        Voici ton association !
+    </h2>
     <div class="d-grid gap-2">
         ${assos.map(asso => `
             <div class="card">
@@ -204,7 +226,7 @@ const displayResult = () => {
             </div>
         `).join('')}
         ${assos.length === 0 ? '<p class="text-center text-danger">Aucune association ne correspond à vos critères.</p>' : ''}
-        <button type="button" class="btn btn-outline-danger btn-lg">Retour</button>
+        <button type="button" class="button-red" href="#">Retour</button>
     </div>
     `;
 
