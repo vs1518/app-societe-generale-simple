@@ -68,6 +68,7 @@
     {% include 'home/questionnaire.html.twig' %}
 
 
+
 </div>
 
 <script>
@@ -207,27 +208,70 @@ const getFilteredAssociations = () => {
 };
 
 const displayResult = () => {
+
+questionnaireBody.classList.add('transparent-background');
+
+questionnaireBody.innerHTML = `
+    <div id="animation-loading">
+        <img src="{{ asset('/images/oeuf1.png')}}" alt="Dessin poussin" class="animation-resultat">
+        <p class="loading-text">Chargement...</p>
+    </div>
+`;
+
+const animationContainer = questionnaireBody.querySelector('#animation-loading');
+const animationImages = [
+  '{{ asset("/images/oeuf1.png")}}',
+    '{{ asset("/images/oeuf2.png")}}',
+      '{{ asset("/images/oeuf3.png")}}',
+        '{{ asset("/images/oeuf4.png")}}',
+          '{{ asset("/images/oeuf5.png")}}',
+            '{{ asset("/images/oeuf-fin.png")}}',
+];
+
+let currentIndex = 0;
+const animationInterval = setInterval(() => {
+  currentIndex = (currentIndex + 1) % animationImages.length;
+  const rotateClass = currentIndex % 2 === 0 ? 'rotate-right' : 'rotate-left';
+  const imageHTML = `<img src="${animationImages[currentIndex]}" alt="Image ${currentIndex + 1}" class="animation-resultat">`;
+  animationContainer.innerHTML = `
+    ${imageHTML}
+    <p class="loading-text">Chargement...</p>
+  `;
+}, 1000); // Temps en millisecondes entre chaque image (ici, 1 secondes)
+
+// Arrêtez l'animation après un certain nombre de secondes (ici 6 secondes)
+setTimeout(() => {
+  clearInterval(animationInterval);
+  displayFinalResult();
+}, 6000); // Temps en millisecondes avant d'afficher le résultat final
+
+};
+
+const displayFinalResult = () => {
     const assos = getFilteredAssociations();
+
+    questionnaireBody.classList.remove('transparent-background');
+    questionnaireBody.classList.add('white-background');
 
     questionnaireBody.innerHTML = `
     <button class="button-close" href="#">x</button>
     <div class="img-poule-intro"><img src="{{ asset('/images/poule-poussin.png')}}" alt="poule et poussin dessin" class="chicken-intro"></div>
     <div class="img-coquille-fin"><img src="{{ asset('/images/coquille.png')}}" alt="coquille d'oeufs dessin" class="shell-outro"></div>
 
-    <h2 class="text-center mb-4">
-        Voici ton association !
-    </h2>
-    <div class="d-grid gap-2">
-        ${assos.map(asso => `
-            <div class="card">
-                <div class="card-body">
-                    ${escapeXSS(asso.name)}
+    ${assos.length !== 0 ? '<h2 class="text-center mb-4">Voici ton association !</h2>' : ''}
+
+    ${assos.map(asso => `
+            <div class="resultat">
+                <div class="contenu-resultat">
+                    <h3 class="asso-name">${escapeXSS(asso.name)}</h3>
+                    <img src="{{ asset('/images/${escapeXSS(asso.image)}')}}" alt="Logo association" class="asso-logo">
                 </div>
+                <p class="asso-description">${escapeXSS(asso.description)}</p>
+                <a href="${escapeXSS(asso.url)}" class="asso-link button-red">Visiter le site web</a>
             </div>
-        `).join('')}
-        ${assos.length === 0 ? '<p class="text-center text-danger">Aucune association ne correspond à vos critères.</p>' : ''}
-        <button type="button" class="button-red" href="#">Retour</button>
-    </div>
+    `).join('')}
+    ${assos.length === 0 ? '<p class="text-center text-danger">Aucune association ne correspond à vos critères.</p>' : ''}
+    <button type="button" class="button-red" href="#">Retour</button>
     `;
 
     questionnaireBody.querySelector('button').addEventListener('click', () => {
