@@ -99,9 +99,40 @@ body {
     text-align: center;
 }
 
+.div-poule{
+    display: none;
+}
+
+
+/* _______Code pour bloc central blanc_____ */
+.questionnaire-body, .questionnaire-intro {
+    position:relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -150%);
+    z-index: 10;
+    width: 50vw;
+    height:50vh;
+    padding-top: 10rem;
+    display: none;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding:30px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.questionnaire-intro {
+    justify-content: center;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
 
 /* ___________Code pour la div introduction_________ */
-
 .chicken-intro {
     width: 25%;
     position: absolute;
@@ -109,11 +140,25 @@ body {
     left: 60%;
     z-index: 11;
     transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
 .egg-intro {
+    position: relative;
     width:15%;
+}
+
+.egg-img {
+    width:70px;
     height: auto;
+}
+
+.logo-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
 }
 
 .eggs-logo {
@@ -132,15 +177,42 @@ body {
     border:none;
     height: 25px;
     width: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(100%, 100%);
+
 }
 
-
-.button-start {
+.button-red {
     color:#FFFFFF;
     border-radius: 100px;
     border: none;
     background: #E4002C;
     padding: 10px 20px;
+    width:auto;
+}
+
+
+/* ___________Code pour conclusion / résultat_________ */
+
+.shell-outro {
+    width:20%;
+    position:absolute;
+    top:100%;
+    left:0%;
+    transform: translate(-50%, -50%);
+}
+
+.contenu-resultat {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.asso-logo {
+    width:20%;
 }
 
 .img-poule-intro {
@@ -153,3 +225,47 @@ body {
     width: 50%;
 }
 
+.img-poule-intro {
+    position:absolute;
+    bottom: 0;
+    width: 25%;
+}
+
+.img-poule-intro img {
+    width: 50%;
+}
+
+
+.animation-resultat {
+    width:30%;
+}
+
+.loading-text {
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.transparent-background {
+    background-color: transparent;
+}
+
+.white-background {
+background-color: #FFFFFF;
+}
+
+/* ___________Code pour la__map ________ */
+
+svg{
+    position: absolute;
+}
+#map-france path {
+    fill: #E60028;
+    stroke: black;
+}
+#map-france path:hover {
+    fill: black;
+    stroke: white;
+    stroke-width: 5;
+    cursor: pointer;
+}

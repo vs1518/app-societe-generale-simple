@@ -13,13 +13,18 @@ class AppFixtures extends Fixture
     {
         $regions = [
             'Ile-de-France',
-            'Bretagne',
-            'Centre-Val de Loire',
             'Normandie',
             'Nouvelle Aquitaine',
             'Occitanie',
             'Pays de La Loire',
             'Provence-Alpes-Côte d\'Azur',
+            'Grand Est',
+            'Auvergne-Rhône-Alpes',
+            'Bourgogne-Franche-Comté',
+            'Bretagne',
+            'Centre-Val de Loire',
+            'Corse',
+            'Normandie',
         ];
         foreach ($regions as $i => $region) {
             $filter = new Filter();
@@ -83,6 +88,9 @@ class AppFixtures extends Fixture
 
         $asso = new Association();
         $asso->setName('Association 1');
+        $asso->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.');
+        $asso->setImage('CPossible.png');
+        $asso->setUrl('https://www.societegenerale.com/fr');
         $asso->addFilter($this->getReference('region_0'));
         $asso->addFilter($this->getReference('modeDeTravail_0'));
         $asso->addFilter($this->getReference('disponibilite_0'));
@@ -92,6 +100,9 @@ class AppFixtures extends Fixture
 
         $asso = new Association();
         $asso->setName('Association 2');
+        $asso->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.');
+        $asso->setImage('kodiko.png');
+        $asso->setUrl('https://www.societegenerale.com/fr');
         $asso->addFilter($this->getReference('region_1'));
         $asso->addFilter($this->getReference('modeDeTravail_1'));
         $asso->addFilter($this->getReference('disponibilite_1'));
@@ -101,6 +112,9 @@ class AppFixtures extends Fixture
 
         $asso = new Association();
         $asso->setName('Association 3');
+        $asso->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.');
+        $asso->setImage('MyJobGlasses.png');
+        $asso->setUrl('https://www.societegenerale.com/fr');
         $asso->addFilter($this->getReference('region_0'));
         $asso->addFilter($this->getReference('modeDeTravail_2'));
         $asso->addFilter($this->getReference('disponibilite_0'));
