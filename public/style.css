@@ -80,6 +80,11 @@ body {
 .questionnaire-intro {
     justify-content: center;
 }
+.questionnaire-body.large-section {
+    width: 80vw;
+    height:80vh;
+    transform: translate(-50%, -110%);
+}
 
 a {
     outline: none;
@@ -90,8 +95,8 @@ a {
 .chicken-intro {
     width:25%;    
     position:absolute;
-    top:0%;
-    left:100%;
+    top:75%;
+    left:90%;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
@@ -152,8 +157,8 @@ a {
 .shell-outro {
     width:20%;
     position:absolute;
-    top:100%;
-    left:0%;
+    top:80%;
+    left:10%;
     transform: translate(-50%, -50%);
 }
 
