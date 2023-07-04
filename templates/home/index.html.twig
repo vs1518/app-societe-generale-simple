@@ -31,7 +31,7 @@
     <button class="button-entrance" onclick="showSectionIntro()">Questionnaire "Trouve ton association"</button>
 
     <div class="questionnaire-intro">
-        <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro"></div>
+        <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro" style="margin-left: 60px; margin-top: 200px;"></div>
         <button class="button-close" href="#">x</button>
         <h1>Trouve ton association !</h1>
         <p>Nec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoque sexu peremptae sunt originis altae conplures, adulteriorum flagitiis obnoxiae vel stuprorum.</p>
@@ -66,6 +66,7 @@ const escapeXSS = (text) => {
 };
 
 const questionnaireBody = document.querySelector('.questionnaire-body');
+const divpoule = document.querySelector('.div-poule');
 
 const filters = {{ filters|json_encode()|raw }};
 const associations = {{ associations|json_encode()|raw }};
@@ -122,21 +123,7 @@ const displayQuestion = () => {
     questionnaireBody.innerHTML = `
     <h3 class="text-center mb-4">
         ${escapeXSS(question ? question.title : '')}
-    </h3>
-    ${ etape >= 0 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro"></div>
-    ` : ''}
-
-    ${ etape == 0 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
-
-    ${ etape == 1 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/20-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
-
-    ${ etape == 2 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/40-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
-
-    ${ etape == 3 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/60-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
-
-    ${ etape == 4 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/80-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
-
-    <div class="d-grid gap-2 mb-4">
+    </h3><div class="d-grid gap-2 mb-4">
         ${nbAssos > 0 ? filtersHTML : `<p class="text-center text-danger">Aucune association ne correspond à vos critères.</p>`}
         ${etape > 0 ? '<button type="button" class="btn btn-outline-danger btn-lg">Retour</button>' : ''}
     </div>
@@ -145,6 +132,17 @@ const displayQuestion = () => {
         ${assos.map(asso => '<li>' + escapeXSS(asso.name) + '</li>').join('')}
     </ul>
     `;
+
+    divpoule.innerHTML = `${ etape >= 0 ?  `<div class="img-poule-intro1"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro" style="margin-left: 150px; margin-top: 200px;"></div>
+    ` : ''}
+
+    ${ etape == 0 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 1 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/20-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 2 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/40-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 3 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/60-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}`;
 
     console.log('etape', etape);
     console.log('filtersSelected', filtersSelected);
@@ -209,7 +207,7 @@ const displayResult = () => {
     <h3 class="text-center mb-4">
         Résultat
     </h3>
-    <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class=""></div>
+    <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="" ></div>
 <div class="img-poule-intro"><img src="{{ asset('/images/poussin.png')}}" alt="poule dessin" class=""></div>
     <div class="d-grid gap-2">
         ${assos.map(asso => `
@@ -420,25 +418,29 @@ document.addEventListener('DOMContentLoaded', function() {
 function showSectionIntro() {
     var buttonEntrance = document.querySelector('.button-entrance');
     var questionnaireIntro = document.querySelector('.questionnaire-intro');
+    var divpoule = document.querySelector('.div-poule');
 
     // ButtonEntrance devient display:none
     buttonEntrance.style.display = 'none';
+    divpoule.style.display = 'none';
 
     // Questionnaire devient display:flex
     questionnaireIntro.style.display = 'flex';
-
+    
 }
 
 /* ______Code pour lancer le questionnaire (introduction, bouton "commencer")______*/
 function showSectionQuizz() {
     var questionnaireIntro = document.querySelector('.questionnaire-intro');
     var questionnaireBody = document.querySelector('.questionnaire-body');
+    var divpoule = document.querySelector('.div-poule');
 
     // ButtonEntrance devient display:none
     questionnaireIntro.style.display = 'none';
 
     // Questionnaire devient display:flex
     questionnaireBody.style.display = 'flex';
+    divpoule.style.display = 'flex';
 
 }
 

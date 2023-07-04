@@ -76,11 +76,15 @@ body {
     align-items: center;
 }
 
+.div-poule{
+    display: none;
+}
+
 
 /* _______Code pour bloc central blanc_____ */
 .questionnaire-body, .questionnaire-intro {
     position:absolute;
-    top:50%;
+    top:45%;
     left:50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -99,10 +103,11 @@ body {
 /* ___________Code pour la div introduction_________ */
 
 .chicken-intro {
-    width:25%;
-    position:absolute;
-    top:0%;
-    left:100%;
+    width: 25%;
+    position: absolute;
+    bottom: 20%;
+    left: 60%;
+    z-index: 11;
     transform: translate(-50%, -50%);
 }
 
@@ -136,5 +141,15 @@ body {
     border: none;
     background: #E4002C;
     padding: 10px 20px;
+}
+
+.img-poule-intro {
+    position:absolute;
+    bottom: 0;
+    width: 25%;
+}
+
+.img-poule-intro img {
+    width: 50%;
 }
 
