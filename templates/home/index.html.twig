@@ -123,10 +123,24 @@ const displayQuestion = () => {
     <h3 class="text-center mb-4">
         ${escapeXSS(question ? question.title : '')}
     </h3>
+    ${ etape >= 0 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class="chicken-intro"></div>
+    ` : ''}
+
+    ${ etape == 0 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 1 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/20-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 2 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/40-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 3 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/60-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
+    ${ etape == 4 ?  `<div class="img-poule-intro"><img src="{{ asset('/images/80-oeuf.png')}}" alt="poule dessin" class=""></div>` : ''}
+
     <div class="d-grid gap-2 mb-4">
         ${nbAssos > 0 ? filtersHTML : `<p class="text-center text-danger">Aucune association ne correspond à vos critères.</p>`}
         ${etape > 0 ? '<button type="button" class="btn btn-outline-danger btn-lg">Retour</button>' : ''}
     </div>
+
     <ul>
         ${assos.map(asso => '<li>' + escapeXSS(asso.name) + '</li>').join('')}
     </ul>
@@ -195,6 +209,8 @@ const displayResult = () => {
     <h3 class="text-center mb-4">
         Résultat
     </h3>
+    <div class="img-poule-intro"><img src="{{ asset('/images/poule.png')}}" alt="poule dessin" class=""></div>
+<div class="img-poule-intro"><img src="{{ asset('/images/poussin.png')}}" alt="poule dessin" class=""></div>
     <div class="d-grid gap-2">
         ${assos.map(asso => `
             <div class="card">
